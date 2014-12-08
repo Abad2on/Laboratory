@@ -1,0 +1,54 @@
+//---------------------------------------------------------------------------
+#include <vcl.h>
+#pragma hdrstop
+#include <math.h>
+#include "Unit1.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+        : TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+        Edit1->Text="0,1";       Edit2->Text="1,0";
+        Edit3->Text="10";        Edit4->Text="0,1";
+        Memo1->Clear();
+        Memo1->Lines->Add("Lab work №3");
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+double a, b, x, y, h, r, s, m;
+int n, k;
+a=StrToFloat(Edit1->Text);
+b=StrToFloat(Edit2->Text);
+n=StrToFloat(Edit3->Text);
+h=StrToFloat(Edit4->Text);
+Chart1->Series[0]->Clear();
+Chart1->Series[1]->Clear();
+for (x=a; x<=b; x+=h) {
+r=s=x;
+for(k=1; k<=n; k++){
+r=r*2*(exp(x)*(-1))/k;
+s+=r;
+}
+y=exp(-2*exp(x));
+m=fabs(y-s);
+Memo1->Lines->Add("At x="+FloatToStrF(x,ffFixed,8,2)
++" sum="+FloatToStrF(s,ffFixed,8,5));
+Memo1->Lines->Add("y="+FloatToStrF(y,ffFixed,8,7));
+Memo1->Lines->Add("|y-s|="+FloatToStrF(m,ffFixed,8,7));
+Chart1->Series[0]->AddXY(x,s);
+Chart1->Series[1]->AddXY(x,y);
+        }
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Button2Click(TObject *Sender)
+{
+Memo1->Clear();
+}
