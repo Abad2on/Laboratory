@@ -1,0 +1,60 @@
+//---------------------------------------------------------------------------
+#include <conio.h>
+#include <iostream>
+#pragma hdrstop
+//---------------------------------------------------------------------------
+#pragma argsused
+
+using namespace std;
+int main()
+{
+    int a[100];
+    unsigned int n;
+    cout << "Enter the size of the array 1-100: ";
+    cin >> n;
+
+    while (n > 100) {
+        cout << "The wrong size. Enter the size of the array 1-100: ";
+        cin >> n;
+    }
+
+    char c;
+    cout << "Enter a random number? (y/n): ";
+    cin >> c;
+    while (c != 'y' && c != 'n') {
+        cout << "Invalid Input! (y/n): ";
+        cin >> c;
+    }
+
+    if (c == 'y') {
+        randomize();
+        for (unsigned int i=0; i<n; i++) {
+            a[i] = random(51) - 25;
+            cout << a[i] << ' ';
+        }
+        cout << endl;
+    } else {
+        for (unsigned int i=0; i<n; i++)
+            cin >> a[i];
+    }
+
+    int min = 0;
+    for (unsigned int i=1; i<n; i++) {
+        if (a[i] < a[min])
+            min = i;
+    }
+
+    int sum = 0;
+    for (unsigned int i=0; i<min; i++)
+        sum += a[i];
+
+    if (sum == 0) {
+    cout << "Sum = 0 or elements are equal " ;
+    getch(); }
+    else {
+    cout << "Elements of sum prior to the minimum: " << sum << endl;
+    getch(); }
+
+    return 0;
+}
+//---------------------------------------------------------------------------
