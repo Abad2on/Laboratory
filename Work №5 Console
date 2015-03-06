@@ -1,11 +1,10 @@
 //---------------------------------------------------------------------------
 #include <conio.h>
-#include <iostream>
+#include <iostream.h>
 #pragma hdrstop
 //---------------------------------------------------------------------------
 #pragma argsused
 
-using namespace std;
 int main()
 {
     int a[100];
