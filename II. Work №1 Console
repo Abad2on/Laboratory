@@ -12,7 +12,7 @@ void Fun(int *a, int n, int zero_1, int zero_2, int &sum, int &kolvo, int &l)
 {
 
 zero_1 = -1;
-l=1;
+l = 1;
 
 for(int i=0; i<n; i++)
     {
