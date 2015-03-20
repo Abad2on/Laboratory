@@ -1,0 +1,77 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#include <iostream.h>
+#pragma hdrstop
+
+//---------------------------------------------------------------------------
+
+#pragma argsused
+
+void Fun(int *a, int n, int zero_1, int zero_2, int &sum, int &kolvo, int &l)
+{
+
+zero_1 = -1;
+l=1;
+
+for(int i=0; i<n; i++)
+    {
+  if(a[i] == 0)
+    {
+        zero_2 = i+1;
+  if(zero_1 == -1)
+        zero_1 = i;
+    }
+  }
+
+  for(int i=zero_1; i<zero_2; i++)
+    {
+        sum += a[i];
+    }
+
+  for(int i=zero_1; i<zero_2; i++)
+    {
+        kolvo = zero_2-zero_1-2;
+    }
+
+        if(kolvo < 2){
+              l = 0;
+    }
+}
+
+
+int main()
+{
+  int i, n;
+  int sum, kolvo;
+  int zero_1, zero_2;
+  int l;
+
+
+        cout << "Vvedite kol-vo elementov massiva: ";
+        cin >> n;
+  int *a=new int [n];
+        cout << endl;
+        cout << "Pervonachalniy massiv: " << endl;
+        for (int i=0; i<n; i++){
+        cin >> a[i];
+    }
+  Fun(a, n, zero_1, zero_2, sum, kolvo, l);
+    if(l == 0){
+        cout << endl;
+        cout << "Nepravilniye usloviya!\n";
+        delete []a;
+        system("pause");
+        return 0;
+  }
+        cout << endl;
+        cout << "Summa elementov: " << sum-1;
+        cout << endl;
+        cout << "Kol-vo elementov: " << kolvo;
+        cout << endl;
+    delete []a;
+    system("pause");
+    return 0;
+}
+
+//---------------------------------------------------------------------------
